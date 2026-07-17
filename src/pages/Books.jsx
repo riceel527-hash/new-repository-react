@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { books } from "../data";
-import Book from "./ui/Book";
+import Book from "../Components/ui/Book";
 
 const Books = () => {
   const [filter, setFilter] = useState("DEFAULT");
