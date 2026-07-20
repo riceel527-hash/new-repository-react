@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const BookInfo = ({ books }) => {
     return (
@@ -11,12 +12,21 @@ const BookInfo = ({ books }) => {
             <Link to="/books" className="book__link">
              <FontAwesomeIcon icon="arrow-left" />
             </Link>
-            </div>  
+            <Link to="/book" className="book__link">
+              <h2 className="book__selected--title--top">Books</h2>
+            </Link>
+          </div> 
+            <div className="book__selected">
+                <figure className="book__selected--figure">                
+                    <img src="" alt="" className="book__selected--ig" />
+            </figure>
           </div>
         </div>    
       </main>
     </div>
-    );
+  );
 }
 
 export default BookInfo;
+
+
