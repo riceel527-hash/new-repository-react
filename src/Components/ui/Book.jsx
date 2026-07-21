@@ -2,7 +2,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from 'react-router-dom';
 import Rating from "./Rating";
-import Price from "./Components/ui/Price";
+import Price from "../Price";
 
 const Book = ({ book }) => {
    return (
