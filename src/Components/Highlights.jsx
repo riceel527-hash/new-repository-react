@@ -19,7 +19,7 @@ const Highlights = () => {
             <Highlight
               icon={<FontAwesomeIcon icon="book-open" />}
               title="10,000+ Books"
-              para="Library has books in all your favourite categories."
+              para="Library has books in all your favorite categories."
             />
             <Highlight
               icon={<FontAwesomeIcon icon="tags" />}
