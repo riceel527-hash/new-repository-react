@@ -34,17 +34,15 @@ function BookInfo({ books }) {
                                 </h2>
                                 <Rating rating={book.rating} />
                                 <div className="book__selected--price">
-                                    <Price originalPrice={book.originalprice} salePrice={book.salePrice} />
+                                <Price originalPrice={book.originalprice} salePrice={book.salePrice} />
                              </div>
                                 <div className="book__summary">
-                                <div className="book__summary--title">
-                                    Summary
-                                    </div> 
-                                <p className="book__summary__para">
+                                <h3 className="book__summary--title">Summary</h3>
+                                <p className="book__summary--para">
                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam assumenda at cumque! Nam praesentium magni fuga omnis! Dicta vel
                                   perspiciatis eaque inventore, iste quaerat ea beatae eligendi tempore culpa officiis!
                                </p>
-                              <p className="book__summary__para">
+                              <p className="book__summary--para">
                                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam assumenda at cumque! Nam praesentium magni fuga omnis! Dicta vel
                                   perspiciatis eaque inventore, iste quaerat ea beatae eligendi tempore culpa officiis!
                                </p>
@@ -59,11 +57,12 @@ function BookInfo({ books }) {
                    <div className="books__container">
                     <div className="row">
                         <div className="book__selected--top">
-                            <h2 className="book__selected--title--top">
-                                Recommended Books
-                            </h2>
+                            <h2 className="book__selected--title--top">Recommended Books</h2>
                         </div>
-
+                        {books
+                            .filter(book => book.rating === 5 && book.id !== id)
+                            .map(book => <Book book={book} key={book.id} />)
+                        }
                     </div>
                    </div>
                   </main>
