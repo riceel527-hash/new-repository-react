@@ -3,6 +3,7 @@ import React from 'react';
 import { Link,useParams } from  'react-router-dom';
 import Rating from "../Components/ui/Rating";
 import Price from "../Components/Price";
+import Book from "../Components/ui/Book";
 
 function BookInfo({ books }) {
     const { id } = useParams();
@@ -60,8 +61,8 @@ function BookInfo({ books }) {
                             <h2 className="book__selected--title--top">Recommended Books</h2>
                         </div>
                         {books
-                            .filter(book => book.rating === 5 && book.id !== id)
-                            .map(book => <Book book={book} key={book.id} />)
+                          .filter(book => book.rating === 5 && book.id !== id)
+                          .map(book => <Book book={book} key={book.id} />)
                         }
                     </div>
                    </div>
