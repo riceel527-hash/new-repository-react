@@ -27,7 +27,7 @@ function BookInfo({ books }) {
                                 <img 
                                 src={book.url}
                                 alt="" 
-                                className="book__selected--ig" />
+                                className="book__selected--img" />
                             </figure>
                             <div className="book__selected--description">
                                 <h2 className="book__selected--title">
