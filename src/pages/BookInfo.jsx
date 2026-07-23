@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Link,useParams } from  'react-router-dom';
+import { Link,useParams } from  "react-router-dom";
 import Rating from "../Components/ui/Rating";
 import Price from "../Components/Price";
-import Book from "../Components/ui/Book";
+import Book from "../Components/ui/Book";     
 
 function BookInfo({ books }) {
     const { id } = useParams();
