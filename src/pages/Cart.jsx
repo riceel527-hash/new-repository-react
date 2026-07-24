@@ -12,11 +12,35 @@ const Cart = () => {
                 </div>
                 <div className="cart">
                     <div className="cart__header">
-                    <div className="cart__book">Book</div>
-                    <div className="cart__quantity">Quantity</div>
-                    <div className="cart__total">Price</div>
+                    <span className="cart__book">Book</span>
+                    <span className="cart__quantity">Quantity</span>
+                    <span className="cart__total">Price</span>
                 </div>
+                <div className="cart__body">
+                <div className="cart__item">
+                    <div className="cart__book">
+                        <img 
+                        src="https://m.media-amazon.com/images/I/61mIq2iJUXL._AC_UF1000,1000_QL80_.jpg"
+                        className="cart__book--img"
+                        alt=""
+                        />
+                    <div className="cart__book--info">
+                        <span className="cart__book--title">
+                            Crack the coding Interview
+                        </span>
+                        <span className="cart_book--price">
+                            $10.00
+                        </span>
+                        <button className="cart__book--remove">
+                            Remove
+                        </button>
+                    </div>
+
+
+                    </div>
               </div>
+              </div>
+              </div>      
             </div>
         </div>
      </main>
