@@ -37,7 +37,7 @@ const Cart = () => {
                     </div>
                  </div>
                  <div className="cart__quantity">
-                    <input type="number" min={0} max={99} class="cart__input" />
+                    <input type="number" min={0} max={99} className="cart__input" />
                  </div>
                  <div className="cart__total">
                     $10.00
@@ -58,7 +58,8 @@ const Cart = () => {
                 <span>Total</span>
                 <span>$10.00</span>
             </div>
-         <button className="btn btn__checkout no-cursor">
+         <button className="btn btn__checkout no-cursor"
+          onClick={()=> alert(`Haven't got around to doing this :(`)}>
                 Proceed to checkout
              </button>
             </div>

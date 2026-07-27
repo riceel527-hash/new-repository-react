@@ -1,16 +1,21 @@
 import Footer from "./Components/Footer";
+import React, { useState }  from "react";
 import Nav from "./Components/Nav";
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Books from "./pages/Books";
 import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
-import Price from "./Components/Price";
 import Cart from "./pages/Cart";
 
-
-
 function App() {
+  const [cart, setCart] = useState([]);
+
+  function addToCart(book) {
+    console.log('add to cart',book)
+  }
+
+
   return (
   <Router>
     <div className="App">
@@ -18,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/books" element={<Books books={books} />} />
-        <Route path="/books/:id" element={<BookInfo books={books} />} />
+        <Route path="/books/:id" element={<BookInfo books={books} addToCart={addToCart}/>} />
         <Route path="/cart" element={<Cart books={books} />} />
     </Routes>
     <Footer />
