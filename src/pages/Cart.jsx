@@ -35,17 +35,37 @@ const Cart = () => {
                             Remove
                         </button>
                     </div>
-
-
-                    </div>
+                 </div>
+                 <div className="cart__quantity">
+                    <input type="number" min={0} max={99} class="cart__input" />
+                 </div>
+                 <div className="cart__total">
+                    $10.00
+                 </div>
               </div>
-              </div>
-              </div>      
             </div>
-        </div>
-     </main>
+          </div>      
+        <div className="total">
+            <div className="total__item total__sub-total">
+                <span>Subtotal</span>
+                <span>$9.00</span>
+            </div>
+         <div className="total__item total__tax">
+                <span>Tax</span>
+                <span>$1.00</span>
+            </div>
+         <div className="total__item total__price">
+                <span>Total</span>
+                <span>$10.00</span>
+            </div>
+         <button className="btn btn__checkout no-cursor">
+                Proceed to checkout
+             </button>
+            </div>
+          </div>
+       </div>
+    </main>
     </div>
   );
-}
-
+};
 export default Cart;
