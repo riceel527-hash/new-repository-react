@@ -7,8 +7,7 @@ const Cart = () => {
         <div className="books__container">
             <div className="row">
                 <div className="book__selected--top">
-                    <h2 className="cart__title">
-                        Cart</h2>
+                    <h2 className="cart__title">Cart</h2>
                 </div>
                 <div className="cart">
                     <div className="cart__header">
@@ -28,12 +27,8 @@ const Cart = () => {
                         <span className="cart__book--title">
                             Crack the coding Interview
                         </span>
-                        <span className="cart_book--price">
-                            $10.00
-                        </span>
-                        <button className="cart__book--remove">
-                            Remove
-                        </button>
+                        <span className="cart__book--price"> $10.00</span>
+                        <button className="cart__book--remove"> Remove</button>
                     </div>
                  </div>
                  <div className="cart__quantity">

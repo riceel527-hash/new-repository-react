@@ -12,13 +12,13 @@ function App() {
   const [cart, setCart] = useState([]);
 
   function addToCart(book) {
-    const dupeItem = cart.find(item => +item.id === +book.id)
-    setCart([...cart, {...book, quantity: 1}])
+    setCart([...cart, book])
   }
 
-useEffect(()=> {
-  console.log(cart);
-}, [cart])
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
+
 
   return (
   <Router>
@@ -37,6 +37,5 @@ useEffect(()=> {
 }
 
 export default App;
-
 
 
