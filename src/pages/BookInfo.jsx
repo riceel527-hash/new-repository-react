@@ -3,9 +3,10 @@ import React,{useState } from 'react';
 import { Link,useParams } from  "react-router-dom";
 import Rating from "../Components/ui/Rating";
 import Price from "../Components/Price";
-import Book from "../Components/ui/Book";     
+import Book from "../Components/ui/Book";
+    
 
-function BookInfo({ books,addToCart }) {
+function BookInfo({ books,addToCart,cart }) {
     const { id } = useParams();
     const book= books.find(book => +book.id === +id);
     const [added,setAdded] = useState(false);
@@ -60,7 +61,9 @@ function BookInfo({ books,addToCart }) {
                                </p>
                            </div>
                            {bookExistsOnCart() ? (
+                            <Link to={`/cart`} className="book_link">
                             <button className="btn">Checkout</button>
+                            </Link>
                             ) : (
                               <button className="btn" onClick={() =>addBookToCart(book)}>
                               Add to cart
