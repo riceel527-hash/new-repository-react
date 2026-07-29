@@ -1,9 +1,11 @@
 import React from 'react';
 
 const Cart = ({ cart, changeQuantity }) => {
+    const total = () => {
         let price = 0;
         cart.forEach((item) => {
-            price += +((item.salePrice || item.originalPrice) * item.quantity
+            price += +(
+                (item.salePrice || item.originalPrice) * item.quantity
         ).toFixed(2);
     });
     return price;
