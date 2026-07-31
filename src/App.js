@@ -8,7 +8,7 @@ import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
 import { auth } from './firebase/init';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
   function addToCart(book) {
     setCart([...cart, {...book, quantity: 1 }])
   }
+
 
   function changeQuantity(book, quantity) {
    setCart(
