@@ -8,7 +8,7 @@ import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
 import { auth } from './firebase/init';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword, } from "firebase/auth";
 
 
 function App() {
@@ -22,6 +22,19 @@ function App() {
       console.log(error);
     })
   }
+  
+function login() {
+  signInWithEmailAndPassword(auth, 'email@email.com', 'test123')
+    .then((user) => {
+      console.log(user)
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  }
+
+}
+
   const [cart, setCart] = useState([]);
 
   function addToCart(book) {
@@ -63,6 +76,7 @@ function App() {
   <Router>
     <div className="App">
       <button onClick={register}>Register</button>
+        <button onClick={login}>Login</button>
       <Nav numberOfItems={numberOfItems()} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -80,5 +94,7 @@ function App() {
 }
 
 export default App;
+
+
 
 
