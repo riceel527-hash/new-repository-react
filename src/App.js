@@ -8,7 +8,7 @@ import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
 import { auth } from './firebase/init';
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword, } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut } from "firebase/auth";
 
 
 function App() {
@@ -25,17 +25,24 @@ function App() {
   
 function login() {
   signInWithEmailAndPassword(auth, 'email@email.com', 'test123')
-    .then((user) => {
-      console.log(user)
+    .then((userCredential) => {
+      setUser(userCredential.user);
     })
     .catch((error) =>{
-      console.log(error);
+      console.log(error.message);
     })
   }
 
-}
+  function logout() {
+    signOut(auth);
+    setUser(null);
 
-  const [cart, setCart] = useState([]);
+  }
+
+
+  const [cart, setCart] = useState([null]);
+  const [user, setUser] = useState([]);
+  
 
   function addToCart(book) {
     setCart([...cart, {...book, quantity: 1 }])
@@ -63,9 +70,9 @@ function login() {
     let counter = 0;
     cart.forEach(item => {
       counter += item.quantity
-    })
+  })
     return counter;
-  }
+}
 
 
   useEffect(() => {
@@ -77,6 +84,8 @@ function login() {
     <div className="App">
       <button onClick={register}>Register</button>
         <button onClick={login}>Login</button>
+        <button onClick={logout}>Logout</button>
+        {user.email}
       <Nav numberOfItems={numberOfItems()} />
       <Routes>
         <Route path="/" element={<Home />} />
