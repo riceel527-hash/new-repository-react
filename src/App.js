@@ -40,8 +40,8 @@ function login() {
   }
 
 
-  const [cart, setCart] = useState([null]);
-  const [user, setUser] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [user, setUser] = useState([null]);
   
 
   function addToCart(book) {
@@ -85,7 +85,7 @@ function login() {
       <button onClick={register}>Register</button>
         <button onClick={login}>Login</button>
         <button onClick={logout}>Logout</button>
-        {user.email}
+        {user?.email}
       <Nav numberOfItems={numberOfItems()} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -103,6 +103,8 @@ function login() {
 }
 
 export default App;
+
+
 
 
 
