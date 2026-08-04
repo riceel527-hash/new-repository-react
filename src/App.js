@@ -8,12 +8,21 @@ import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
 import { auth } from './firebase/init';
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged, } from "firebase/auth";
 
 
 function App() {
+  const [user, setUser] = React.useState({});
+
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      if(user) {
+        setUser(user)
+      }
+    })
+    },[]);
   function register() {
-    console.log('register');
     createUserWithEmailAndPassword(auth, 'email@email.com', 'test123')
     .then((user) => {
       console.log(user)
