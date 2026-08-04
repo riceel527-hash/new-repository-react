@@ -18,7 +18,7 @@ function App() {
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setLoading(false);
-      console.log(user);
+      console.log(user.email[0].toUpperCase());
       if(user) {
         setUser(user)
       }
@@ -94,7 +94,7 @@ function login() {
       <button onClick={register}>Register</button>
         <button onClick={login}>Login</button>
         <button onClick={logout}>Logout</button>
-        {loading ? 'loading...' : user.email}
+        {loading ? 'loading...' : user?.email}
       <Nav numberOfItems={numberOfItems()} />
       <Routes>
         <Route path="/" element={<Home />} />
