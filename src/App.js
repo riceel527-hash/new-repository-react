@@ -12,10 +12,12 @@ import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAut
 
 
 function App() {
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = useState(null);
+  const [loading,setLoading] = useState(true);
 
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      setLoading(false);
       console.log(user);
       if(user) {
         setUser(user)
@@ -48,9 +50,7 @@ function login() {
 
   }
 
-
   const [cart, setCart] = useState([]);
-  const [user, setUser] = useState([null]);
   
 
   function addToCart(book) {
@@ -94,7 +94,7 @@ function login() {
       <button onClick={register}>Register</button>
         <button onClick={login}>Login</button>
         <button onClick={logout}>Logout</button>
-        {user?.email}
+        {loading ? 'loading...' : user.email}
       <Nav numberOfItems={numberOfItems()} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -112,6 +112,7 @@ function login() {
 }
 
 export default App;
+
 
 
 
