@@ -8,7 +8,7 @@ import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
 import { auth,db } from './firebase/init';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, getDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged, } from "firebase/auth";
 
 
@@ -18,10 +18,24 @@ function App() {
 
   function createPost() {
     const post = {
-    title: "Land a $400k job",
+    title: "Land a $100k job",
     description: "Finish Frontend Simplified",
   };
   addDoc(collection(db, "posts"), post)
+}
+
+async function getAllPosts() {
+  const { docs } = await getDocs(collection(db, "posts"));
+  const posts = docs.map((elem) => ({ ...elem.data(), id: elem.id }));
+  console.log(posts);
+}
+
+async function getPostById() {
+  const hardcodedId = "0Ztslb4ByM0H4tKRdlFa";
+  const postRef = doc(db, "posts", hardcodedId);
+  const postSnap = await getDoc(postRef);
+  const post =postSnap.data();
+  console.log(post);
 }
 
   React.useEffect(() => {
@@ -33,6 +47,7 @@ function App() {
       }
     })
     },[]);
+
   function register() {
     createUserWithEmailAndPassword(auth, 'email@email.com', 'test123')
     .then((user) => {
@@ -105,6 +120,8 @@ function login() {
         <button onClick={logout}>Logout</button>
         {loading ? 'loading...' : user?.email}
         <button onClick={createPost}>Create Post</button>
+        <button onClick={getAllPosts}>Get All Posts</button>
+        <button onClick={getPostById}>Get Post by ID</button>
         
       <Nav numberOfItems={numberOfItems()} />
       <Routes>
@@ -123,6 +140,7 @@ function login() {
 }
 
 export default App;
+
 
 
 
