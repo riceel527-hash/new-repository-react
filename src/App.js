@@ -8,7 +8,7 @@ import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
 import { auth,db } from './firebase/init';
-import { collection, addDoc, getDocs, getDoc, doc } from "firebase/firestore";
+import { collection, addDoc, getDocs, getDoc, doc, query, where } from "firebase/firestore";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged, } from "firebase/auth";
 
 
@@ -18,8 +18,9 @@ function App() {
 
   function createPost() {
     const post = {
-    title: "Land a $100k job",
-    description: "Finish Frontend Simplified",
+    title: "Finish Firebase Section",
+    description: "Do Frontend Simplified",
+    uid: user.uid,
   };
   addDoc(collection(db, "posts"), post)
 }
