@@ -8,7 +8,7 @@ import { books } from "./data";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
 import { auth,db } from './firebase/init';
-import { collection, addDoc, getDocs, getDoc, doc, query, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, getDoc, doc, query, where, updateDoc, deleteDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged, } from "firebase/auth";
 
 
@@ -16,6 +16,25 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading,setLoading] = useState(true);
 
+  async function updatePost() {
+      const hardcodedId = "0Ztslb4ByM0H4tKRdlFa";
+      const postRef = doc(db, "posts", hardcodedId);
+      const post =await getPostById(hardcodedId)
+      console.log(post);
+      const newPost = {
+        ...post,
+        title: "Land a $400k job",
+       };
+       console.log(newPost);
+      updateDoc(postRef, newPost)
+    }
+
+  function deletePost() {
+      const hardcodedId = "0Ztslb4ByM0H4tKRdlFa";
+      const postRef = doc(db, "posts", hardcodedId);
+      deleteDoc(postRef);
+  }
+ 
   function createPost() {
     const post = {
     title: "Finish Firebase Section",
@@ -31,12 +50,19 @@ async function getAllPosts() {
   console.log(posts);
 }
 
-async function getPostById() {
-  const hardcodedId = "0Ztslb4ByM0H4tKRdlFa";
-  const postRef = doc(db, "posts", hardcodedId);
+async function getPostById(id) {
+  const postRef = doc(db, "posts", id);
   const postSnap = await getDoc(postRef);
-  const post =postSnap.data();
-  console.log(post);
+  return postSnap.data();
+}
+
+async function getPostByUid() {
+   const postCollectionRef = await query(
+    collection(db, "posts"),
+    where("uid", "==", "1")
+   );
+   const { docs } = await getDocs(postCollectionRef);
+   console.log(docs.map(doc => doc.data()));
 }
 
   React.useEffect(() => {
@@ -123,6 +149,9 @@ function login() {
         <button onClick={createPost}>Create Post</button>
         <button onClick={getAllPosts}>Get All Posts</button>
         <button onClick={getPostById}>Get Post by ID</button>
+        <button onClick={getPostByUid}>Get Post by Uid</button>
+        <button onClick={updatePost}>Update Post</button>
+        <button onClick={deletePost}>Delete Post</button>
         
       <Nav numberOfItems={numberOfItems()} />
       <Routes>
@@ -141,6 +170,10 @@ function login() {
 }
 
 export default App;
+
+
+
+
 
 
 
